@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# CHECK FOR jq
+ if ! [ -x /usr/local/bin/jq ] ; then
+    echo "Did not find jq at /usr/local/bin/jq."
+    echo "Please install jq and make sure its in /usr/local/bin/jq. Via homebrew (recommended): 'brew install jq', manually from https://stedolan.github.io/jq/download/"
+    exit 1
+ fi
+
+
+if ! [ -f /Library/Internet\ Plug-Ins/PepperFlashPlayer/manifest.json ]; then
+    echo "Did not find '/Library/Internet Plug-Ins/PepperFlashPlayer/manifest.json'"
+    echo "Install PepperFlashPlayer from https://get.adobe.com/flashplayer/download/?installer=FP_19_Mac_for_Opera_and_Chromium_-_PPAPI&os=OSX&browser_type=KHTML&browser_dist=Chrome"
+    exit 1
+fi
+
+exit 0
