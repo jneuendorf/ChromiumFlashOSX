@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+
+if [ $# -lt 2 ]; then
+    echo "USAGE: $0 your-script.sh \"Your App Name\""
+    exit 1
+fi
+
+if ! [ -f "$1" ]; then
+    echo "Could not find script at '$1'!"
+    exit 1
+fi
+
+APPNAME=$2
+
+if [ -a "$APPNAME.app" ]; then
+    echo "$PWD/$APPNAME.app already exists :("
+    exit 1
+fi
+
+# copy folder structure
+mkdir "$APPNAME.app"
+cp -r ./Contents "$APPNAME.app/Contents"
+
+# copy script into MacOS folder
+cp "$1" "$APPNAME.app/Contents/MacOS/$APPNAME"
+chmod +x "$APPNAME.app/Contents/MacOS/$APPNAME"
+
+# Info.plist, PkgInfo
+cp ./Info.plist "$APPNAME.app/Contents/Info.plist"
+cp ./PkgInfo "$APPNAME.app/Contents/PkgInfo"
+
+# Icon
+cp ./app.icns "$APPNAME.app/Contents/Resources/app.icns"
+
+echo "successfully created $PWD/$APPNAME.app"

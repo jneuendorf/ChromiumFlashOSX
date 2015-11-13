@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# set +x
+
+# CHECK FOR jq
+ if ! [ -x /usr/local/bin/jq ] ; then
+    echo "Did not find jq at /usr/local/bin/jq."
+    echo "Please install jq and make sure its in /usr/local/bin/jq. Via homebrew (recommended): 'brew install jq', manually from https://stedolan.github.io/jq/download/"
+    exit 1
+ fi
+
+
+if ! [ -f /Library/Internet\ Plug-Ins/PepperFlashPlayer/manifest.json ]; then
+    echo "Did not find '/Library/Internet Plug-Ins/PepperFlashPlayer/manifest.json'"
+    echo "Install PepperFlashPlayer from https://get.adobe.com/flashplayer/download/?installer=FP_19_Mac_for_Opera_and_Chromium_-_PPAPI&os=OSX&browser_type=KHTML&browser_dist=Chrome"
+    exit 1
+fi
+
+# get version of currently installed PepperFlashPlayer
+version=$(cat /Library/Internet\ Plug-Ins/PepperFlashPlayer/manifest.json | /usr/local/bin/jq ".version")
+# remove quotes so the version argument is passed to open without them
+version=$(echo $version | tr -d '"')
+
+# NOTE: display version for debugging
+# echo $version
+# osascript -e "tell application \"SystemUIServer\"
+# display dialog \"$version\"
+# end"
+
+# start binary as daemon without nohup.out file or any other output
+# echo "nohup /Applications/Chromium.app/Contents/MacOS/Chromium --ppapi-flash-path=/Library/Internet\ Plug-Ins/PepperFlashPlayer/PepperFlashPlayer.plugin/ --ppapi-flash-version=$version"
+nohup /Applications/Chromium.app/Contents/MacOS/Chromium --ppapi-flash-path=/Library/Internet\ Plug-Ins/PepperFlashPlayer/PepperFlashPlayer.plugin/ --ppapi-flash-version=$version &>/dev/null &
