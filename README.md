@@ -1,5 +1,12 @@
 # ChromiumFlashOSX
-Tool for integrating the PepperFlashPlayer into Chromium on Mac OS X
+
+Tool for integrating the PepperFlashPlayer into Chromium on Mac OS X.
+
+## What you will need
+
+1. Chromium installed in `/Applications`
+2. PepperFlashPlayer
+3. jq
 
 ## Usage
 
