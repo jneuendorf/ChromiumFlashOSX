@@ -5,8 +5,8 @@ Tool for integrating the PepperFlashPlayer into Chromium on Mac OS X.
 ## What you will need
 
 1. Chromium installed in `/Applications`
-2. PepperFlashPlayer
-3. jq
+2. PepperFlashPlayer installed in `/Library/Internet Plug-Ins/PepperFlashPlayer`
+3. jq installed in `/usr/local/bin/`
 
 ## Usage
 
@@ -21,17 +21,19 @@ Tool for integrating the PepperFlashPlayer into Chromium on Mac OS X.
     If errors occur the script will tell you.
 
 
-## Setup & Errors
+## How it works
 
 Before the app is created the `check` script will be run. In case something is wrong the script stops the `make` process.
 
 Possible errors are:
 
-1. `jq` is not installed correctly
-    - it must be in `/usr/local/bin/jq` and it must be executable
+1. `Chromium` is not installed correctly
+    - it must be at `/Applications/Chromium.app`
+2. `jq` is not installed correctly
+    - it must be at `/usr/local/bin/jq` and it must be executable
         - installing it with homebrew (`brew install jq`) does all the things right!
     - I could not get it to work when just using it from the `$PATH` (it seeems that from within the application the `$PATH` is different)
-2. PepperFlashPlayer is not installed correctly
+3. `PepperFlashPlayer` is not installed correctly
     - when using the installer from Adobe it will be put into `/Library/Internet Plug-Ins/PepperFlashPlayer`
     - if [get.adobe.com/flashplayer](https://get.adobe.com/flashplayer/download/?installer=FP_19_Mac_for_Opera_and_Chromium_-_PPAPI&os=OSX&browser_type=KHTML&browser_dist=Chrome) does not work make sure you choose Mac OS X as operating system and the Chrome distribution when downloading the flash player!
     - make sure the folder contains the `PepperFlashPlayer.plugin` and `manifest.json` files

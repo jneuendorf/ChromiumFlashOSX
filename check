@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
-# CHECK FOR jq
- if ! [ -x /usr/local/bin/jq ] ; then
-    echo "Did not find jq at /usr/local/bin/jq."
-    echo "Please install jq and make sure its in /usr/local/bin/jq. Via homebrew (recommended): 'brew install jq', manually from https://stedolan.github.io/jq/download/"
+# CHECK FOR Chromium
+if ! [ -d /Applications/Chromium.app ] ; then
+    echo "Did not find Chromium at /Applications."
+    echo "Please install Chromium and make sure it's at /Applications/Chromium.app."
     exit 1
- fi
+fi
+
+# CHECK FOR jq
+if ! [ -x /usr/local/bin/jq ] ; then
+    echo "Did not find jq at /usr/local/bin/jq."
+    echo "Please install jq and make sure it's at /usr/local/bin/jq. Via homebrew (recommended): 'brew install jq', manually from https://stedolan.github.io/jq/download/"
+    exit 1
+fi
 
 
 if ! [ -f /Library/Internet\ Plug-Ins/PepperFlashPlayer/manifest.json ]; then
