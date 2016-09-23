@@ -35,7 +35,7 @@ Possible errors are:
     - I could not get it to work when just using it from the `$PATH` (it seeems that from within the application the `$PATH` is different)
 3. `PepperFlashPlayer` is not installed correctly
     - when using the installer from Adobe it will be put into `/Library/Internet Plug-Ins/PepperFlashPlayer`
-    - if [get.adobe.com/flashplayer](https://get.adobe.com/flashplayer/download/?installer=FP_19_Mac_for_Opera_and_Chromium_-_PPAPI&os=OSX&browser_type=KHTML&browser_dist=Chrome) does not work make sure you choose Mac OS X as operating system and the Chrome distribution when downloading the flash player!
+    - if [get.adobe.com/flashplayer](https://get.adobe.com/flashplayer/download/?installer=FP_23_Mac_for_Opera_and_Chromium_-_PPAPI&standalone=1) does not work make sure you choose Mac OS X as operating system and the Chrome distribution when downloading the flash player!
     - make sure the folder contains the `PepperFlashPlayer.plugin` and `manifest.json` files
 
 If the checks are passed the application is built. It contains the `chromium-flash` as executable and that's it.
